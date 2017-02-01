@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Plan</title>
+  </head>
+  <body>
+    <form action='/travels/add_plan/{{ request.session.id }}' method='POST'>
+        {% csrf_token %}
+        <h3>Add a Plan</h3>
+        Destination: <input type="text" name='destination'><br>
+        Description: <input type="text" name='description'><br>
+        Departing:<input type="date" name='departing'><br>
+        Returning:<input type="date" name='returning'><br><br>
+         <input type="submit" value='Submit'><br><br>
+       </form>
+
+       {% if messages %}
+       <ul class="messages">
+         {% for message in messages %}
+         <li{% if message.tags %} class="{{ message.tags}}" {% endif %}>{{ message }}
+       </li>
+         {% endfor %}
+       </ul>
+       {% endif %}
+
+       <form action='/travels' method='POST'>
+         {% csrf_token %}
+         <input type="submit" value='Dashboard'>
+       </form>
+
+
+       <form action='/logout' method='POST'>
+         {% csrf_token %}
+         <input type="submit" value='Log Out'>
+       </form>
+
+
+  </body>
+</html>

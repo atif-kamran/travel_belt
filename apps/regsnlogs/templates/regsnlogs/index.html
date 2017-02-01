@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Buddy: Login and Registration</title>
+  </head>
+  <body>
+    <h1>Travel Buddy</h1>
+    <h3>Registration/Login</h3>
+
+    <form action='/register' method="POST">
+    {% csrf_token %}
+      <h3>Registration</h3>
+      Name: <input type="text" name="name"><br>
+      Username: <input type="text" name="username"><br>
+      Password: <input type="password" name="password"><br>
+      <p>Password should be at least 8 characters</p>
+      Confirm Password: <input type="password" name="confirm_pw"><br>
+      <input type="submit" value="submit">
+    </form>
+
+    <form action='/login' method='POST'>
+    {% csrf_token %}
+      <h3> Login </h3>
+      Username:  <input type="text" name='username_log'><br>
+      Password: <input type="password" name='password_log'><br><br>
+      <input type="submit" value='Submit'>
+    </form>
+
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags}}" {% endif %}>{{ message }}
+  </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  </body>
+</html>

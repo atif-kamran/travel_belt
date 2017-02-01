@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>That Particular Destination</title>
+  </head>
+  <body>
+
+    <p>Posted by: {{ user.name }} </p>
+    <p>Trip: {{ trips.destination }}</p>
+    <p>Description: {{ trips.description }}</p>
+    <p>Departing: {{trips.departing}}</p>
+
+    <p>Joining In:</p>
+
+    {% for join in joins %}
+      <p> {{ joins.user.name }} </p>
+    {% endfor %}
+
+
+    <form action='/travels' method='POST'>
+      {% csrf_token %}
+      <input type="submit" value='Dashboard'>
+    </form>
+
+
+    <form action='/logout' method='POST'>
+      {% csrf_token %}
+      <input type="submit" value='Log Out'>
+    </form>
+
+  </body>
+</html>
